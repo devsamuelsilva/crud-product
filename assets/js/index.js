@@ -1,6 +1,13 @@
 const tableContent = document.getElementById("tableContent");
 const btnAddProduct = document.getElementById("addProduct");
 const modal = document.getElementById("modal");
+const productName = document.getElementById("productName");
+const productValue = document.getElementById("productValue");
+const productQuantidade = document.getElementById("productQuantidade");
+const btnSend = document.getElementById("send");
+const btnCancel = document.getElementById("cancel");
+const form = document.getElementById("form");
+
 
 const products = [
     {
@@ -37,8 +44,9 @@ const products = [
   }
 
   function renderDataTable() {
+    tableContent.innerHTML = "";
     products.map((product) => {
-      const preco = formatDataToString(product.preco);
+      const preco = formatDataToString(Number(product.preco));
       const total = product.preco * product.quantidade;
       const totalFormatado = formatDataToString(total);
       const data = creatTabelBodyRow(product.nome, preco, product.quantidade, totalFormatado);
@@ -46,11 +54,40 @@ const products = [
     });
   }
   
-  renderDataTable();
-  
   function openModal () {
     modal.classList.remove("hidden");
     modal.classList.add("flex");
   }
+  
+  function closeModal() {
+    modal.classList.remove("flex");
+    modal.classList.add("hidden");
+  }
+  
+  function addProduct() {
+    if (productName.value && productQuantidade.value && productValue.value) {
+      products.push(
+        {
+          nome: productName.value,
+          preco: productValue.value,
+          quantidade: productQuantidade.value,
+        });
 
+    }
+  }
+
+  renderDataTable();
+  
   btnAddProduct.addEventListener("click", openModal);
+
+btnSend.addEventListener("click", (e) => {
+  e.preventDefault()
+  addProduct();
+  renderDataTable();
+  closeModal();
+});
+ 
+btnCancel.addEventListener("click", (e) => {
+  e.preventDefault();
+  closeModal();
+});
