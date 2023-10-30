@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projeto Produtos - Clientes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <header class="flex justify-between px-10 items-center bg-sky-900 py-4">
+      <div>
+        <img
+          class="w-32"
+          src="./assets/imagens/logo-digital.png.webp"
+          alt="Logo"
+        />
+      </div>
+      <div class="flex gap-3 items-center">
+        <img class="w-8" src="./assets/Imagens/avatar.png" alt="Foto usuário" />
+        <p class="text-white">Olá, Samuel</p>
+      </div>
+    </header>
+    <main class="relative flex min-h-screen">
+      <nav class="w-1/6 absolute left-0 h-full">
+        <ul class="px-4 flex flex-col gap-3">
+          <li class="text-lg font-semibold">Home</li>
+          <li class="text-lg font-semibold"><a href="/">Produtos</a></li>
+          <li class="text-lg font-semibold">Clientes</li>
+        </ul>
+      </nav>
+      <section class="bg-slate-50 h-full px-8 py-4 w-5/6 absolute right-0">
+        <div class="flex justify-between items-center">
+          <h2 class="font-bold text-xl">Clientes</h2>
+          <button
+            id="addProduct"
+            class="px-3 py-2 rounded-md bg-sky-900 text-white hover:bg-sky-800"
+          >
+            Adicionar
+          </button>
+        </div>
+        <div class="w-full mt-8">
+          <table class="w-full table-auto shadow rounded-md overflow-hidden">
+            <thead class="bg-gray-800 text-white">
+              <tr>
+                <th class="text-left p-3">Nome</th>
+                <th class="text-left p-3">Preço</th>
+                <th class="text-left p-3">Quantidade</th>
+                <th class="p-3">Total</th>
+                <th class="p-3">Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tableContent"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+    <div
+      id="modal"
+      class="hidden fixed w-full top-0 bottom-0 bg-[#00000070] justify-center items-center"
+    >
+      <div
+        class="flex flex-col gap-2 max-w-fit px-3 py-5 bg-white rounded-md justify-center items-center"
+      >
+        <h2 class="uppercase text-lg font-semibold">Novo Produto</h2>
+        <form id="form" class="flex flex-col gap-3">
+          <input
+            class="w-72 px-3 py-2 outline-none border border-black rounded-md"
+            type="text"
+            id="productName"
+            placeholder="Nome do produto"
+          />
+          <input
+            class="w-72 px-3 py-2 outline-none border border-black rounded-md"
+            type="number"
+            id="productValue"
+            placeholder="Valor do produto"
+          />
+          <input
+            class="w-72 px-3 py-2 outline-none border border-black rounded-md"
+            type="number"
+            id="productQuantity"
+            placeholder="Quantidade do produto"
+          />
+          <span
+            id="errorMessage"
+            class="hidden text-center text-red-700 text-sm"
+          >
+            Todos os campos são obrigatórios
+          </span>
+          <button
+            class="w-full py-3 px-4 rounded-md text-white text-lg uppercase bg-sky-900 hover:bg-sky-800"
+            id="send"
+          >
+            Enviar
+          </button>
+          <button
+            class="w-full py-3 px-4 rounded-md text-sky-900 text-lg uppercase bg-yellow-400 hover:bg-yellow-300"
+            id="cancel"
+          >
+            Cancelar
+          </button>
+        </form>
+      </div>
+    </div>
+    <script src="./assets/js/clientes.js"></script>
+  </body>
+</html>
